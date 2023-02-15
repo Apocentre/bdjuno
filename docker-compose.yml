@@ -1,26 +1,30 @@
 version: '3.6'
 services:
   hasura:
-    image: hasura/graphql-engine:v2.0.4
-    ports:
-    - "8080:8080"
-    restart: always
-    environment:
-      ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
-      HASURA_GRAPHQL_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
-      ## enable the console served by server
-      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
-      ## enable debugging mode. It is recommended to disable this in production
-      HASURA_GRAPHQL_DEV_MODE: "true"
-      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
-      ## uncomment next line to set an admin secret
-      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+      image: hasura/graphql-engine:v2.18.0
+      ports:
+      - "8080:8080"
+      restart: always
+      environment:
+        ## postgres database to store Hasura metadata
+        HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@192.168.106.2/${POSTGRES_DB}
+        ## this env var can be used to add the above postgres database to Hasura as a data source. this can be removed/updated based on your needs
+        PG_DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@192.168.106.2/${POSTGRES_DB}
+        ## enable the console served by server
+        HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+        ## enable debugging mode. It is recommended to disable this in production
+        HASURA_GRAPHQL_DEV_MODE: "true"
+        HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+        ## uncomment next line to run console offline (i.e load console assets from server instead of CDN)
+        # HASURA_GRAPHQL_CONSOLE_ASSETS_DIR: /srv/console-assets
+        ## uncomment next line to set an admin secret
+        # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
   bdjuno:
     build:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: bdjuno parse --home /bdjuno/.bdjuno
+    command: bdjuno start
     volumes:
       ## Modify first path to match configuration file.
-      - /bdjuno/.bdjuno:/bdjuno/.bdjuno
+      - ./.bdjuno:/root/.bdjuno
