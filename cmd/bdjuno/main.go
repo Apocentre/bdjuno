@@ -2,6 +2,10 @@ package main
 
 import (
 	"github.com/cosmos/cosmos-sdk/types/module"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	"github.com/cosmos/cosmos-sdk/x/staking"
+	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	"github.com/forbole/juno/v4/cmd"
 	initcmd "github.com/forbole/juno/v4/cmd/init"
 	parsetypes "github.com/forbole/juno/v4/cmd/parse/types"
@@ -52,7 +56,12 @@ func main() {
 // support custom messages.
 // This should be edited by custom implementations if needed.
 func getBasicManagers() []module.BasicManager {
-	return []module.BasicManager{}
+	modules := map[string]module.AppModuleBasic {
+		authtypes.ModuleName: auth.AppModuleBasic{},
+		stakingtypes.ModuleName: staking.AppModuleBasic{},
+	}
+	
+	return []module.BasicManager {modules}
 }
 
 // getAddressesParser returns the messages parser that should be used to get the users involved in
