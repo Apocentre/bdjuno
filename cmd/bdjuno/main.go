@@ -4,8 +4,14 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	"github.com/cosmos/cosmos-sdk/x/bank"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	"github.com/cosmos/cosmos-sdk/x/gov"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	ibctypes "github.com/cosmos/ibc-go/v6/modules/apps/27-interchain-accounts/types"
+	ibc "github.com/cosmos/ibc-go/v6/modules/core"
 	"github.com/forbole/juno/v4/cmd"
 	initcmd "github.com/forbole/juno/v4/cmd/init"
 	parsetypes "github.com/forbole/juno/v4/cmd/parse/types"
@@ -59,6 +65,9 @@ func getBasicManagers() []module.BasicManager {
 	modules := map[string]module.AppModuleBasic {
 		authtypes.ModuleName: auth.AppModuleBasic{},
 		stakingtypes.ModuleName: staking.AppModuleBasic{},
+		banktypes.ModuleName: bank.AppModuleBasic{},
+		govtypes.ModuleName: gov.AppModuleBasic{},
+		ibctypes.ModuleName: ibc.AppModuleBasic{},
 	}
 	
 	return []module.BasicManager {modules}

@@ -84,3 +84,9 @@ format:
 clean:
 	rm -f tools-stamp ./build/**
 .PHONY: clean
+
+build-all-archs:
+	GOOS=linux GOARCH=amd64 go build -o ./build/bdjuno-linux-amd64 ./cmd/bdjuno/main.go
+	GOOS=linux GOARCH=arm64 go build -o ./build/bdjuno-linux-arm64 ./cmd/bdjuno/main.go
+	GOOS=darwin GOARCH=amd64 go build -o ./build/bdjuno-darwin-amd64 ./cmd/bdjuno/main.go
+	GOOS=darwin GOARCH=arm64 go build -o ./build/bdjuno-darwin-arm64 ./cmd/bdjuno/main.go
