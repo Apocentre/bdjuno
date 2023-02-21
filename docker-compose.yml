@@ -27,7 +27,7 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
-    command: bdjuno start
+    command: start --home /root/.bdjuno
     volumes:
       ## Modify first path to match configuration file.
       - ./.bdjuno:/root/.bdjuno

@@ -10,3 +10,4 @@ config.yaml
 coverage.*
 .bdjuno
 .env
+.DS_Store
