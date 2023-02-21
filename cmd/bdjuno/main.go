@@ -1,6 +1,9 @@
 package main
 
 import (
+	"selfchain/x/migration"
+	migrationtypes "selfchain/x/migration/types"
+
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
@@ -68,6 +71,7 @@ func getBasicManagers() []module.BasicManager {
 		banktypes.ModuleName: bank.AppModuleBasic{},
 		govtypes.ModuleName: gov.AppModuleBasic{},
 		ibctypes.ModuleName: ibc.AppModuleBasic{},
+		migrationtypes.ModuleName: migration.AppModuleBasic{},
 	}
 	
 	return []module.BasicManager {modules}
