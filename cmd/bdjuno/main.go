@@ -9,6 +9,8 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/cosmos/cosmos-sdk/x/bank"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	"github.com/cosmos/cosmos-sdk/x/distribution"
+	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	"github.com/cosmos/cosmos-sdk/x/gov"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
@@ -68,6 +70,7 @@ func getBasicManagers() []module.BasicManager {
 	modules := map[string]module.AppModuleBasic {
 		authtypes.ModuleName: auth.AppModuleBasic{},
 		stakingtypes.ModuleName: staking.AppModuleBasic{},
+		distributiontypes.ModuleName: distribution.AppModuleBasic {},
 		banktypes.ModuleName: bank.AppModuleBasic{},
 		govtypes.ModuleName: gov.AppModuleBasic{},
 		ibctypes.ModuleName: ibc.AppModuleBasic{},
