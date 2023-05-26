@@ -13,9 +13,13 @@ import (
 	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
 	"github.com/cosmos/cosmos-sdk/x/gov"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	"github.com/cosmos/cosmos-sdk/x/slashing"
+	shashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 	ibctypes "github.com/cosmos/ibc-go/v6/modules/apps/27-interchain-accounts/types"
+	ibctransfer "github.com/cosmos/ibc-go/v6/modules/apps/transfer"
+	ibctransfertypes "github.com/cosmos/ibc-go/v6/modules/apps/transfer/types"
 	ibc "github.com/cosmos/ibc-go/v6/modules/core"
 	"github.com/forbole/juno/v4/cmd"
 	initcmd "github.com/forbole/juno/v4/cmd/init"
@@ -74,6 +78,8 @@ func getBasicManagers() []module.BasicManager {
 		banktypes.ModuleName: bank.AppModuleBasic{},
 		govtypes.ModuleName: gov.AppModuleBasic{},
 		ibctypes.ModuleName: ibc.AppModuleBasic{},
+		ibctransfertypes.ModuleName: ibctransfer.AppModuleBasic{},
+		shashingtypes.ModuleName: slashing.AppModuleBasic{},
 		migrationtypes.ModuleName: migration.AppModuleBasic{},
 	}
 	
