@@ -4,6 +4,7 @@ import (
 	"selfchain/x/migration"
 	migrationtypes "selfchain/x/migration/types"
 	selfvestingtypes "selfchain/x/selfvesting/types"
+	"selfchain/x/vesting"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/x/auth"
@@ -82,7 +83,7 @@ func getBasicManagers() []module.BasicManager {
 		ibctransfertypes.ModuleName: ibctransfer.AppModuleBasic{},
 		shashingtypes.ModuleName: slashing.AppModuleBasic{},
 		migrationtypes.ModuleName: migration.AppModuleBasic{},
-		selfvestingtypes.ModuleName: migration.AppModuleBasic{},
+		selfvestingtypes.ModuleName: vesting.AppModuleBasic{},
 	}
 	
 	return []module.BasicManager {modules}
