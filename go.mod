@@ -322,4 +322,7 @@ require (
 
 // This is to avoid warnings while running the binary
 // See here: https://github.com/desmos-labs/desmos/pull/1131#discussion_r1194090419
-replace github.com/cosmos/gogoproto => github.com/cosmos/gogoproto v1.4.10
+replace (
+  github.com/cosmos/gogoproto => github.com/cosmos/gogoproto v1.4.10
+  selfchain v1.0.0 => ../selfchain
+)
