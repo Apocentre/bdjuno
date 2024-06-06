@@ -22,7 +22,7 @@ require (
 	github.com/tendermint/tendermint v0.35.9
 	google.golang.org/grpc v1.61.0
 	gopkg.in/yaml.v3 v3.0.1
-	selfchain v0.1.0
+	selfchain v1.0.0
 )
 
 require (
