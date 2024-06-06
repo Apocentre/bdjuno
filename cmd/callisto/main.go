@@ -7,6 +7,20 @@ import (
 	selfvestingtypes "selfchain/x/selfvesting/types"
 
 	"github.com/cosmos/cosmos-sdk/types/module"
+	"github.com/cosmos/cosmos-sdk/x/auth"
+	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
+	"github.com/cosmos/cosmos-sdk/x/bank"
+	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
+	"github.com/cosmos/cosmos-sdk/x/distribution"
+	distributiontypes "github.com/cosmos/cosmos-sdk/x/distribution/types"
+	"github.com/cosmos/cosmos-sdk/x/gov"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	"github.com/cosmos/cosmos-sdk/x/slashing"
+	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
+	"github.com/cosmos/cosmos-sdk/x/staking"
+	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
+	ibctransfertypes "github.com/cosmos/ibc-go/v7/modules/apps/transfer/types"
+	ibc "github.com/cosmos/ibc-go/v7/modules/core"
 	"github.com/forbole/juno/v5/cmd"
 	initcmd "github.com/forbole/juno/v5/cmd/init"
 	parsetypes "github.com/forbole/juno/v5/cmd/parse/types"
@@ -17,8 +31,6 @@ import (
 	parsecmd "github.com/forbole/callisto/v4/cmd/parse"
 
 	"github.com/forbole/callisto/v4/types/config"
-
-	"cosmossdk.io/simapp"
 
 	"github.com/forbole/callisto/v4/database"
 	"github.com/forbole/callisto/v4/modules"
@@ -65,9 +77,8 @@ func getBasicManagers() []module.BasicManager {
 		distributiontypes.ModuleName: distribution.AppModuleBasic {},
 		banktypes.ModuleName: bank.AppModuleBasic{},
 		govtypes.ModuleName: gov.AppModuleBasic{},
-		ibctypes.ModuleName: ibc.AppModuleBasic{},
-		ibctransfertypes.ModuleName: ibctransfer.AppModuleBasic{},
-		shashingtypes.ModuleName: slashing.AppModuleBasic{},
+		ibctransfertypes.ModuleName: ibc.AppModuleBasic{},
+		slashingtypes.ModuleName: slashing.AppModuleBasic{},
 		migrationtypes.ModuleName: migration.AppModuleBasic{},
 		selfvestingtypes.ModuleName: selfvesting.AppModuleBasic{},
 	}
